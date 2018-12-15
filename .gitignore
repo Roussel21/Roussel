@@ -1,18 +1,208 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+# Work with Python 3.6
+# Do some shit that is neither logical nor sensible
+# I mean, who would write this crap?
+import discord
+from discord.ext import commands
+import asyncio
+import os
 
-# Other files and folders
-.settings/
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+TOKEN= os.environ["token"]
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+client = discord.Client()
+
+@client.event
+async def on_message(message):
+    # we do not want the bot to reply to itself
+    if message.author == client.user:
+        return
+
+    if message.content.startswith('!hello'):
+        print (message.author.name)
+        if(message.author.name == "anotherdeadhero"):
+            msg = 'Baaa {0.author.mention} my Sheepy Brother.'.format(message)
+            await client.send_message(message.channel, msg)
+        elif(message.author.name == "LimpWrist"):
+            msg = 'Limpest wrist in town! It\'s  {0.author.mention}'.format(message)
+            await client.send_message(message.channel, msg)
+        elif(message.author.name == "Vildekilde"):
+            msg = 'Easy Peasy Lemon Squeezy.'.format(message)
+            await client.send_message(message.channel, msg)
+        elif(message.author.name == "Silly Seal"):
+            msg = 'Hide the 10 Euro Whiskey! It\'s {0.author.mention}'.format(message)
+            await client.send_message(message.channel, msg)
+        elif(message.author.name == "Vampmau"):
+            msg = 'Burn Baby Burn! It\'s {0.author.mention}'.format(message)
+            await client.send_message(message.channel, msg)
+        elif(message.author.name == "Amaterasu911"):
+            msg = 'Tell me what to do, Daddy'.format(message)
+            await client.send_message(message.channel, msg)
+        elif(message.author.name == "Delta 5-1"):
+            msg = 'Break my head down and rebuild it as a better sheep?'.format(message)
+            await client.send_message(message.channel, msg)
+        else:
+            msg = 'Tickle my tummy {0.author.mention} ?'
+            await client.send_message(message.channel, msg)
+
+    if message.content.startswith('!fuck'):
+        msg = 'Fuck you too! {0.author.mention}'.format(message)
+        await client.send_message(message.channel, msg)
+
+    if message.content.startswith('!say'):
+        param, value = message.split("!",1)
+        msg = 'Fuck you too! {0.author.mention}'.format(message)
+        await client.send_message(message.channel, msg)
+
+
+    if message.content.startswith('!getmeabeer'):
+        msg = 'This function has been deprecated'.format(message)
+        await client.send_message(message.channel, msg)
+
+    if message.content.startswith('!shutdownikea'):
+        msg = 'This function has been deprecated'.format(message)
+        await client.send_message(message.channel, msg)
+
+    if message.content.startswith('!nakedsheep'):
+        print ("getting naked")
+        msg = 'x'
+        e = discord.Embed()
+        con = 'For your eyes only'
+        e.set_image(url="https://i.redd.it/wx5k9bh5jo401.jpg")
+        await client.send_message(message.channel, embed=e)
+
+    if message.content.startswith('!lemon'):
+        print ("getting naked")
+        msg = 'SheepBot swipes right!'
+        e = discord.Embed()
+        con = 'For your eyes only'
+        e.set_image(url="https://media.discordapp.net/attachments/336962256036167690/510552272741203968/IMG_20181109_213149.jpg?width=523&height=677")
+        await client.send_message(message.channel,  msg,embed=e)
+
+
+    if message.content.startswith('!helpsheep'):
+        msg = 'The following d functionality is available:\n \
+         !hello - Says a nice, friendly sheep hello.\n \
+         !nakedsheep - Shows you a sexy sheep, disrobed - for your private viewing pleasure. SheepBot doesn\'t judge.\n \
+         !baa - No longer supported' \
+         .format(message)
+        await client.send_message(message.channel, msg)
+
+    if message.content=='!rushb':
+        print ("Making a noise")
+        author=message.author
+        print(message.author)
+        voice_channel=author.voice.voice_channel
+        print(author.voice.voice_channel)
+        if voice_channel is not None:
+            if client.is_voice_connected(message.server):
+                for connection in tuple(client.voice_clients):
+                    if connection.server is message.server:
+                        print ("Disconnecting from a channel")
+                        await connection.disconnect()
+            print ("Joiing a channel")
+            vc = await client.join_voice_channel(voice_channel)
+            print ("Playing a song")
+            player = await vc.create_ytdl_player('https://www.youtube.com/watch?v=HKtW3Kb6Leo')
+            player.start()
+            counter = 0
+            duration = 3   # In seconds
+            while not counter >= duration:
+                await asyncio.sleep(1)
+                counter = counter + 1
+            await vc.disconnect()
+        else:
+            await client.send_message(message.channel,'{} You must be in a voice channel to full enjoy this function.'.format(author.mention))
+
+    if message.content=='!danish':
+        print ("Making a noise")
+        author=message.author
+        print(message.author)
+        voice_channel=author.voice.voice_channel
+        print(author.voice.voice_channel)
+        if voice_channel is not None:
+            if client.is_voice_connected(message.server):
+                for connection in tuple(client.voice_clients):
+                    if connection.server is message.server:
+                        print ("Disconnecting from a channel")
+                        await connection.disconnect()
+            print ("Joiing a channel")
+            vc = await client.join_voice_channel(voice_channel)
+            print ("Playing a song")
+            player = await vc.create_ytdl_player('https://www.youtube.com/watch?v=6UzP4QPA5Kg')
+            player.start()
+            counter = 0
+            duration = 40   # In seconds
+            while not counter >= duration:
+                await asyncio.sleep(1)
+                counter = counter + 1
+            await vc.disconnect()
+        else:
+            await client.send_message(message.channel,'{} You must be in a voice channel to full enjoy this function.'.format(author.mention))
+
+
+    if message.content=='!baa':
+        print ("Making a noise")
+        author=message.author
+        print(message.author)
+        voice_channel=author.voice.voice_channel
+        print(author.voice.voice_channel)
+        if voice_channel is not None:
+            if client.is_voice_connected(message.server):
+                for connection in tuple(client.voice_clients):
+                    if connection.server is message.server:
+                        print ("Disconnecting from a channel")
+                        await connection.disconnect()
+            print ("Joiing a channel")
+            vc = await client.join_voice_channel(voice_channel)
+            print ("Playing a song")
+            player = await vc.create_ytdl_player('https://www.youtube.com/watch?v=x3c0JgZ59QQ')
+            player.start()
+            counter = 0
+            duration = 10   # In seconds
+            while not counter >= duration:
+                await asyncio.sleep(1)
+                counter = counter + 1
+            await vc.disconnect()
+        else:
+            await client.send_message(message.channel,'{} You must be in a voice channel.'.format(author.mention))
+
+
+    if message.content=='!smoke':
+        print ("Making a noise")
+        author=message.author
+        print(message.author)
+        voice_channel=author.voice.voice_channel
+        print(author.voice.voice_channel)
+        if voice_channel is not None:
+            if client.is_voice_connected(message.server):
+                for connection in tuple(client.voice_clients):
+                    if connection.server is message.server:
+                        print ("Disconnecting from a channel")
+                        await connection.disconnect()
+            print ("Joiing a channel")
+            vc = await client.join_voice_channel(voice_channel)
+            print ("Playing a song")
+            player = await vc.create_ytdl_player('https://www.youtube.com/watch?v=yLPjzpNKIX8')
+            player.start()
+            counter = 0
+            duration = 10   # In seconds
+            while not counter >= duration:
+                await asyncio.sleep(1)
+                counter = counter + 1
+            await vc.disconnect()
+        else:
+            await client.send_message(message.channel,'{} You must be in a voice channel.'.format(author.mention))
+
+
+
+
+
+@client.event
+async def on_ready():
+    print('Logged in as')
+    print(client.user.name)
+    print(client.user.id)
+    print('------')
+    await client.change_presence(game=discord.Game(name="Getting Goofy in the Green Room"))
+
+client.run(TOKEN)
